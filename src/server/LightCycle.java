@@ -1,9 +1,11 @@
+package server;
+
 public class LightCycle {
     String name;
     int x;
     int y;
 
-    LightCycle(String name, int x, int y){
+    public LightCycle(String name, int x, int y){
         this.name = name;
         this.x = x;
         this.y = y;

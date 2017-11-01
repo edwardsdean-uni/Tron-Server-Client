@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
+import server.LightCycle;
 
 public class TestLightCycle {
 

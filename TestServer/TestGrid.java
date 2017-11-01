@@ -1,6 +1,8 @@
 import javafx.scene.effect.Light;
 import org.junit.Assert;
 import org.junit.Test;
+import server.Grid;
+import server.LightCycle;
 
 import java.util.Arrays;
 

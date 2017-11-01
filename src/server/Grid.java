@@ -1,3 +1,5 @@
+package server;
+
 import java.util.ArrayList;
 
 public class Grid {
@@ -6,7 +8,7 @@ public class Grid {
     int y;
     ArrayList<LightCycle> game_grid = new ArrayList<LightCycle>();
 
-    Grid(int x, int y){
+    public Grid(int x, int y){
 
         this.x = x;
         this.y = y;
