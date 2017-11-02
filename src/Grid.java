@@ -6,7 +6,7 @@ public class Grid {
 
     int x;
     int y;
-    ArrayList<LightCycle> game_grid = new ArrayList<LightCycle>();
+    ArrayList<server.LightCycle> game_grid = new ArrayList<server.LightCycle>();
 
     public Grid(int x, int y){
 
@@ -15,7 +15,7 @@ public class Grid {
     }
 
     public void add_light_wall(String player, int x, int y){
-        LightCycle cycle = new LightCycle(player, x, y);
+        server.LightCycle cycle = new server.LightCycle(player, x, y);
         game_grid.add(cycle);
     }
 
@@ -28,7 +28,7 @@ public class Grid {
         return y;
     }
 
-    public ArrayList<LightCycle> getGame_grid() {
+    public ArrayList<server.LightCycle> getGame_grid() {
         return game_grid;
     }
 }
