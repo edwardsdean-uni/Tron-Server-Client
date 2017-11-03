@@ -1,3 +1,4 @@
+import server.Grid;
 import utility.Network;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,6 +44,9 @@ public class TronServer {
             }
 
             //game
+            int grid_x = 500;
+            int grid_y = 500;
+            Grid light_gird = new Grid(grid_x, grid_y);
 
 
             } catch(IOException e){
