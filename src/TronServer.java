@@ -17,15 +17,20 @@ public class TronServer {
             network.broadcast(network.getIP() + "," + network.getPort());
 
 
+            int grid_x = 500;
+            int grid_y = 500;
+            Grid light_gird = new Grid(grid_x, grid_y);
 
             List<String> players = new ArrayList<>();
 
             //wait for players
             int number_of_players = get_number_of_player();
-            for (int i = 0; i < number_of_players; ++i) {
 
+
+            //read send loop
+            while (true) {
                 String command = network.read();  //will wait till recieves a message
-                System.out.println("cammnad " + command);
+                System.out.println("command: " + command);
 
                 if (command.startsWith("add player")) {
                     String[] tokens = command.split(" ");
@@ -41,12 +46,20 @@ public class TronServer {
                                 "okay");
                     }
                 }
+
+                if (command.startsWith("send grid x")) {
+                    System.out.println("sending gird x");
+                    network.send(network.getLatestReadIP(), network.getLatestReadPort(), Integer.toString(grid_x));
+                }
+                if (command.startsWith("send grid y")) {
+                    network.send(network.getLatestReadIP(), network.getLatestReadPort(), Integer.toString(grid_y));
+                } else {
+                    network.send(network.getLatestReadIP(),
+                            network.getLatestReadPort(),
+                            "error");
+                }
             }
 
-            //game
-            int grid_x = 500;
-            int grid_y = 500;
-            Grid light_gird = new Grid(grid_x, grid_y);
 
 
             } catch(IOException e){

@@ -50,25 +50,41 @@ public class TronClient {
         return scanner.nextLine();
     }
 
-    public static void gui_client(String serverIP, int ServerPort){
-        JFrame frame = new JFrame("JFrame Example");
-        JPanel panel = new JPanel();
+    public static void gui_client(String serverIP, int serverPort){
+        try {
+            JFrame frame = new JFrame("JFrame Example");
+            JPanel panel = new JPanel();
 
-        panel.setLayout(new FlowLayout());
+            Network network = new Network(INET_ADDR, PORT);
 
-        JLabel label = new JLabel("This is a label!");
+            network.send(serverIP, serverPort, "send grid x");
+            String server_reply = network.read();
+            int grid_x = Integer.parseInt(server_reply);
 
-        JButton button = new JButton();
-        button.setText("Press me");
+            network.send(serverIP, serverPort, "send grid y");
+            String server_reply2 = network.read();
+            int grid_y = Integer.parseInt(server_reply2);
 
-        panel.add(label);
-        panel.add(button);
+            System.out.println(grid_x + grid_y);
 
-        frame.add(panel);
-        frame.setSize(300, 300);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+            panel.setLayout(new GridLayout(grid_x, grid_y));
+
+            JLabel label = new JLabel("This is a label!");
+
+            JButton button = new JButton();
+            button.setText("Press me");
+
+            panel.add(label);
+            panel.add(button);
+
+            frame.add(panel);
+            frame.setSize(300, 300);
+            frame.setLocationRelativeTo(null);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
